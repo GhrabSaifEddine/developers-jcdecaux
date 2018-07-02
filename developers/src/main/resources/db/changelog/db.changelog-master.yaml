@@ -1,0 +1,165 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: ecoquelin
+      comment : "Creates table INFOS"
+      changes:
+        - createTable:
+            tableName: infos
+            columns:
+              - column:
+                  name: version
+                  type: varchar
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+  - changeSet:
+      id: 2
+      author: ecoquelin
+      comment : "Insert starting version"
+      changes:
+        - insert:
+            tableName: infos
+            columns:
+              - column:
+                  name: version
+                  value: "1"
+                
+  - changeSet:
+      id: 3
+      author: sghrab
+      comment : "Creates table DEVELOPPER"
+      changes:
+        - createTable:
+            tableName: developper
+            columns:
+              - column:
+                  name: id_developper
+                  type: integer
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: nom_developper
+                  type: character varying(200)
+              - column:
+                  name: poste_developper
+                  type: character varying(200)     
+              - column:
+                  name: annee_exp_developper
+                  type: integer    
+
+  - changeSet:
+      id: 15
+      author: sghrab
+      comment : "Insert in developper "
+      changes:
+        - insert:
+            tableName: developper
+            columns:
+              - column:
+                  name: id_developper
+                  value: 1
+              - column:
+                  name: nom_developper
+                  value: "SaifEddine GHRAB"
+              - column:
+                  name: poste_developper
+                  value: "Ingénieur développeur JAVA / JEE" 
+              - column:
+                  name: annee_exp_developper
+                  value: 2
+
+  - changeSet:
+      id: 16
+      author: sghrab
+      comment : "Creates table PROGRAMMING LANGUAGE"
+      changes:
+        - createTable:
+            tableName: prg_lg
+            columns:
+              - column:
+                  name: id_language
+                  type: integer
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: libelle_language
+                  type: character varying(200)  
+                     
+  - changeSet:
+      id: 17
+      author: sghrab
+      comment : "Insert in prg_lg "
+      changes:
+        - insert:
+            tableName: prg_lg
+            columns:
+              - column:
+                  name: id_language
+                  value: 1
+              - column:
+                  name: libelle_language
+                  value: "JAVA / JEE"
+
+  - changeSet:
+      id: 19
+      author: sghrab
+      comment : "Insert in prg_lg "
+      changes:
+        - insert:
+            tableName: prg_lg
+            columns:
+              - column:
+                  name: id_language
+                  value: 2
+              - column:
+                  name: libelle_language
+                  value: ".NET"
+                  
+  - changeSet:
+      id: 20
+      author: sghrab
+      comment : "Creates Association table between DEVELOPPER and PROGRAMMING LANGUAGE"
+      changes:
+        - createTable:
+            tableName: association_prg_lg_dev
+            columns:
+              - column:
+                  name: id_association
+                  type: integer
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: id_developper
+                  type: integer
+                  constraints:  
+                     foreignKeyName: fk_dev
+                     references: developper(id_developper)
+              - column:
+                  name: id_language
+                  type: integer
+                  constraints:  
+                     foreignKeyName: fk_prg_lg
+                     references: prg_lg(id_language)
+                     
+  - changeSet:
+      id: 21
+      author: sghrab
+      comment : "Insert in association_prg_lg_dev "
+      changes:
+        - insert:
+            tableName: association_prg_lg_dev
+            columns:
+              - column:
+                  name: id_association
+                  value: 1
+              - column:
+                  name: id_developper
+                  value: 1
+              - column:
+                  name: id_language
+                  value: 1                                                                                                  
