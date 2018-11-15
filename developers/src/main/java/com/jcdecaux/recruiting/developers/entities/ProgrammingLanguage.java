@@ -2,10 +2,7 @@ package com.jcdecaux.recruiting.developers.entities;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created By SAIF on 02/07/2018
@@ -16,7 +13,8 @@ import javax.persistence.Table;
 public class ProgrammingLanguage {
 
 	@Id
-	//@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "langage_generator")
+	@SequenceGenerator(name="langage_generator", sequenceName = "seq_langage_id", allocationSize=1)
 	@Column(name = "id_language")
 	private int idLanguage;
 	

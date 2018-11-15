@@ -13,8 +13,8 @@ import javax.persistence.*;
 public class AssociationLanguageDevelopper {
 
 	@Id
-	//@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id_association")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "developer_langage_generator")
+	@SequenceGenerator(name="developer_langage_generator", sequenceName = "seq_developer_langage_id", allocationSize=1)	@Column(name = "id_association")
 	private int idAssociation;
 	
 	@ManyToOne(fetch=FetchType.EAGER)

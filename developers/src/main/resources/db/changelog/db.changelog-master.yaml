@@ -25,7 +25,7 @@ databaseChangeLog:
               - column:
                   name: version
                   value: "1"
-                
+
   - changeSet:
       id: 3
       author: sghrab
@@ -45,10 +45,10 @@ databaseChangeLog:
                   type: character varying(200)
               - column:
                   name: poste_developper
-                  type: character varying(200)     
+                  type: character varying(200)
               - column:
                   name: annee_exp_developper
-                  type: integer    
+                  type: integer
 
   - changeSet:
       id: 15
@@ -66,7 +66,7 @@ databaseChangeLog:
                   value: "SaifEddine GHRAB"
               - column:
                   name: poste_developper
-                  value: "Ingénieur développeur JAVA / JEE" 
+                  value: "Ingénieur développeur JAVA / JEE"
               - column:
                   name: annee_exp_developper
                   value: 2
@@ -87,8 +87,8 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: libelle_language
-                  type: character varying(200)  
-                     
+                  type: character varying(200)
+
   - changeSet:
       id: 17
       author: sghrab
@@ -118,7 +118,7 @@ databaseChangeLog:
               - column:
                   name: libelle_language
                   value: ".NET"
-                  
+
   - changeSet:
       id: 20
       author: sghrab
@@ -136,16 +136,16 @@ databaseChangeLog:
               - column:
                   name: id_developper
                   type: integer
-                  constraints:  
+                  constraints:
                      foreignKeyName: fk_dev
                      references: developper(id_developper)
               - column:
                   name: id_language
                   type: integer
-                  constraints:  
+                  constraints:
                      foreignKeyName: fk_prg_lg
                      references: prg_lg(id_language)
-                     
+
   - changeSet:
       id: 21
       author: sghrab
@@ -162,4 +162,34 @@ databaseChangeLog:
                   value: 1
               - column:
                   name: id_language
-                  value: 1                                                                                                  
+                  value: 1
+
+  - changeSet:
+      id: 4
+      author: sghrab
+      changes:
+        - createSequence:
+            sequenceName: seq_langage_id
+            incrementBy: 1
+            ordered: true
+            startValue: 3
+
+  - changeSet:
+      id: 5
+      author: sghrab
+      changes:
+        - createSequence:
+            sequenceName: seq_developer_id
+            incrementBy: 1
+            ordered: true
+            startValue: 2
+
+  - changeSet:
+      id: 6
+      author: sghrab
+      changes:
+         - createSequence:
+             sequenceName: seq_developer_langage_id
+             incrementBy: 1
+             ordered: true
+             startValue: 2

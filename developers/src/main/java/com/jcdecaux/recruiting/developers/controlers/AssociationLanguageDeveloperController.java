@@ -22,6 +22,7 @@ import static org.springframework.http.HttpStatus.OK;
  * Created By SAIF on 02/07/2018
  */
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/associations")
 @Api(description = "Associations REST Controler", value = "/associations")

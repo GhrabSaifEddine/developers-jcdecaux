@@ -19,6 +19,7 @@ import static org.springframework.http.HttpStatus.OK;
  * Created By SAIF on 02/07/2018
  */
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/developers")
 @Api(description = "Developer REST Controler", value = "/developers")

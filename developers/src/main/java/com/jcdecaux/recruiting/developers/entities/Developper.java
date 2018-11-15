@@ -2,10 +2,7 @@ package com.jcdecaux.recruiting.developers.entities;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created By SAIF on 02/07/2018
@@ -17,7 +14,8 @@ import javax.persistence.Table;
 public class Developper {
 
 	@Id
-	//@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "developer_generator")
+	@SequenceGenerator(name="developer_generator", sequenceName = "seq_developer_id", allocationSize=1)
 	@Column(name = "id_developper")
 	private int idDevelopper;
 	
